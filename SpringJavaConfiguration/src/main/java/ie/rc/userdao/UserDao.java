@@ -36,7 +36,6 @@ public class UserDao {
 			stmt = conn.prepareStatement(sql);
 			ResultSet rs = stmt.executeQuery();
 			while(rs.next()) {
-				
 				int id = rs.getInt("id");
 				String name = rs.getString("name");
 				String email = rs.getString("email");
