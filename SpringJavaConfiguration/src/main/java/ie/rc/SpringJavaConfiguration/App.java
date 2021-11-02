@@ -1,7 +1,11 @@
 package ie.rc.SpringJavaConfiguration;
 
+import java.util.ArrayList;
+
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+
+import ie.rc.userdao.*;
 
 /**
  * Hello world!
@@ -13,14 +17,33 @@ public class App
     {
         System.out.println( "Annotation Driven Spring Configuration" );
         
+        /*
+        UserDao dao = new InMemoryUserDao();
+        
+        ArrayList<User> users = dao.getUsers();
+        
+        for (User u:users) {
+        	
+        	System.out.println(u);
+        }
+        
+        dao.close();
+        */
+        
+        
         ApplicationContext ctx = new AnnotationConfigApplicationContext(AppConfig.class);
         
-        TestBean tb = ctx.getBean(TestBean.class);
+        UserDao dao = ctx.getBean(UserDao.class);
         
-        System.out.println(tb);
+        ArrayList<User> users = dao.getUsers();
         
-        String s = ctx.getBean(String.class);
+        for (User u:users) {
+        	
+        	System.out.println(u);
+        }
         
-        System.out.println(s);
+        dao.close();
+        
+        
     }
 }

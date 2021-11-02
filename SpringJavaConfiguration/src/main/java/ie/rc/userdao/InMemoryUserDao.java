@@ -2,7 +2,7 @@ package ie.rc.userdao;
 
 import java.util.ArrayList;
 
-public class InMemoryUserDao {
+public class InMemoryUserDao implements UserDao {
 
 	protected ArrayList<User> users = new ArrayList<User>();
 	

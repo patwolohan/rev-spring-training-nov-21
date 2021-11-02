@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class SqliteUserDao {
+public class SqliteUserDao implements UserDao {
 
 	// member variables
 	private Connection conn;
@@ -27,8 +27,8 @@ public class SqliteUserDao {
 	}
 	
 	// getUsers
-	public List<User> getUsers() {
-		List<User> users = new ArrayList<>();
+	public ArrayList<User> getUsers() {
+		ArrayList<User> users = new ArrayList<>();
 		String sql = "select * from users";
 		
 		PreparedStatement stmt;
