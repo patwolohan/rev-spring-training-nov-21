@@ -1,10 +1,10 @@
 package ie.rc.userdao;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public interface UserDao {
 
-	ArrayList<User> getUsers();
+	List<User> getUsers();
 	User getUser(int id) throws UserDaoException;
 	User addUser(User userToAdd);
 	void updateUser(User userToUpdate) throws UserDaoException;

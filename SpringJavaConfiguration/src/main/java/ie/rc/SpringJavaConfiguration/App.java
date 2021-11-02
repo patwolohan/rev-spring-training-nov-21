@@ -1,6 +1,7 @@
 package ie.rc.SpringJavaConfiguration;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -35,7 +36,7 @@ public class App
         
         UserDao dao = ctx.getBean(UserDao.class);
         
-        ArrayList<User> users = dao.getUsers();
+        List<User> users = dao.getUsers();
         
         for (User u:users) {
         	

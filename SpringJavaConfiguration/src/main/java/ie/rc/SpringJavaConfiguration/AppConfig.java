@@ -5,6 +5,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import ie.rc.userdao.InMemoryUserDao;
+import ie.rc.userdao.JdbcTemplateUserDao;
 import ie.rc.userdao.SqliteUserDao;
 import ie.rc.userdao.UserDao;
 
@@ -27,7 +28,7 @@ public class AppConfig {
 	@Bean
 	public UserDao getDao() {
 		
-		return new InMemoryUserDao();
+		return new JdbcTemplateUserDao();
 	}
 	
 

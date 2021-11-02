@@ -1,10 +1,11 @@
 package ie.rc.userdao;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class InMemoryUserDao implements UserDao {
 
-	protected ArrayList<User> users = new ArrayList<User>();
+	protected List<User> users = new ArrayList<User>();
 	
 	public InMemoryUserDao() {
 		
@@ -15,7 +16,7 @@ public class InMemoryUserDao implements UserDao {
 		users.add(new User(5, "Eve", "eve@gmail.com", true));
 	}
 
-	public ArrayList<User> getUsers() {
+	public List<User> getUsers() {
 		return users;
 	}
 	

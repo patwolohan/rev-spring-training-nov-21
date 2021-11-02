@@ -27,7 +27,7 @@ public class SqliteUserDao implements UserDao {
 	}
 	
 	// getUsers
-	public ArrayList<User> getUsers() {
+	public List<User> getUsers() {
 		ArrayList<User> users = new ArrayList<>();
 		String sql = "select * from users";
 		
