@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class UserDao {
+public class SqliteUserDao {
 
 	// member variables
 	private Connection conn;
@@ -18,7 +18,7 @@ public class UserDao {
 	// member functions
 
 	// constructor
-	public UserDao() {
+	public SqliteUserDao() {
 		try {
 			conn = DriverManager.getConnection(url);
 		} catch (SQLException e) {
@@ -80,7 +80,7 @@ public class UserDao {
 		return u;
 	}	
 	
-	public void deleteUser(int id) {
+	public void deleteUser(int id) throws UserDaoException {
 		
 		String sql = "DELETE FROM users WHERE id = ?";
 		try {
@@ -89,7 +89,7 @@ public class UserDao {
 			int n = stmt.executeUpdate();
 			
 			if (n==0) {
-				//throw new UserDaoException("User " + id + " not found");
+				throw new UserDaoException("User " + id + " not found");
 			}
 			stmt.close();
 			
@@ -165,8 +165,39 @@ public class UserDao {
 	
 	public static void main(String[] args) {
 		
-		UserDao dao = new UserDao();
+		SqliteUserDao dao = new SqliteUserDao();
 
+		
+		User userToAdd = new User("NEW USER", "new.user@gmail.com", true);
+		
+		
+		User addedUser = dao.addUser(userToAdd);
+		
+		System.out.println(addedUser);
+		
+		
+		
+		//dao.deleteUser(3);
+		
+		/*
+		User u4 = dao.getUser(4);
+		
+		
+		u4.setName("CHANGED");
+		u4.setEmail("changed@gmail.com");
+		u4.setActive(false);
+		
+		dao.updateUser(u4);
+		
+		u4 = dao.getUser(4);
+		
+		System.out.println(u4);
+		*/
+		
+		
+		
+		
+		
 		
 		//User n = new User("NEW USER", "new.user@gmail.com", true);
 		
@@ -175,7 +206,7 @@ public class UserDao {
 		//System.out.println(n);
 		
 		//dao.deleteUser(2);
-		
+		/*
 		List<User> users = dao.getUsers();
 
 		for (User u: users) {
@@ -187,6 +218,8 @@ public class UserDao {
 		User u = dao.getUser(2);
 		
 		System.out.println(u);
+		
+		*/
 		dao.close();
 
 	}
