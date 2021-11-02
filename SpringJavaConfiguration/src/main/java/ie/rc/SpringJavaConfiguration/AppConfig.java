@@ -8,6 +8,7 @@ import ie.rc.userdao.InMemoryUserDao;
 import ie.rc.userdao.SqliteUserDao;
 import ie.rc.userdao.UserDao;
 
+
 @Configuration
 public class AppConfig {
 	
@@ -26,7 +27,7 @@ public class AppConfig {
 	@Bean
 	public UserDao getDao() {
 		
-		return new SqliteUserDao();
+		return new InMemoryUserDao();
 	}
 	
 
