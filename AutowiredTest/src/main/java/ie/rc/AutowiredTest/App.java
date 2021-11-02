@@ -14,6 +14,13 @@ public class App
     public static void main( String[] args )
     {
         System.out.println( "Autowired Test" );
+     
+        /* this doesn't work
+         * autowired only works on spring managed beans
+         */
+        //UserService usb = new UserService();
+        //usb.doSomething();
+        
         
         ApplicationContext ctx = new AnnotationConfigApplicationContext(AppConfig.class);
         

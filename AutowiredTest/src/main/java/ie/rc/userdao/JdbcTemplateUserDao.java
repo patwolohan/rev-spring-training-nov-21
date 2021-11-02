@@ -4,21 +4,21 @@ import java.util.List;
 
 import javax.sql.DataSource;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 import org.sqlite.SQLiteDataSource;
 
 
+@Component
 public class JdbcTemplateUserDao implements UserDao {
 
+	@Autowired
 	private JdbcTemplate jdbc;
 	
 	public JdbcTemplateUserDao() {
 		
-		SQLiteDataSource dataSource = new SQLiteDataSource();
-		dataSource.setUrl("jdbc:sqlite:C:/data/november/userdb.db");
 		
-		jdbc = new JdbcTemplate(dataSource);
 	}
 	@Override
 	public List<User> getUsers() {

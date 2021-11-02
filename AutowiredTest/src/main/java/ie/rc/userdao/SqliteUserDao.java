@@ -10,7 +10,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Component;
 
-@Component
+
 public class SqliteUserDao implements UserDao {
 
 	// member variables

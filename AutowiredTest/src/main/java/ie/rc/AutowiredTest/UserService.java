@@ -19,7 +19,6 @@ public class UserService {
 		
 	}
 	
-	
 	public void doSomething() {
 		
 		List<User> users = dao.getUsers();
@@ -27,8 +26,5 @@ public class UserService {
 		for (User u: users) {
 			System.out.println(u);
 		}
-		
-		
 	}
-
 }
