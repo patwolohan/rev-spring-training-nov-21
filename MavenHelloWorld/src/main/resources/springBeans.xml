@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="someString" class="java.lang.String">
+		<constructor-arg value="This is a string from spring"></constructor-arg>
+	</bean>
+
+	<bean id="myTestBean" class="ie.rc.mavenhelloworld.MavenHelloWorld.TestBean">
+		<constructor-arg value="Name Set By Spring"></constructor-arg>
+	</bean>
+
+</beans>
