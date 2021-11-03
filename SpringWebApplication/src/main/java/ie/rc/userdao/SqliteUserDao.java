@@ -12,15 +12,12 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 
-
+@Component
 public class SqliteUserDao implements UserDao {
 
 	// member variables
 	private Connection conn;
 	private final String url = "jdbc:sqlite:C:/data/november/userdb.db";
-	
-	//@Value("${app.name}")
-	//private String name;
 	
 	//@Value("${app.connectionString}")
 	//private String url;
@@ -30,7 +27,6 @@ public class SqliteUserDao implements UserDao {
 
 	// constructor
 	public SqliteUserDao() {
-		//System.out.println("Name:" + name);
 		System.out.println("The url is:" + url);
 		try {
 			conn = DriverManager.getConnection(url);

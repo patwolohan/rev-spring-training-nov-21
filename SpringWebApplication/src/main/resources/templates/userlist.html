@@ -1,0 +1,30 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+
+<h1>User List</h1>
+
+<table>
+
+	<tr th:each="user: ${users}">
+		
+		<td><a th:href="@{'/users/' + ${user.id}}" th:text="${user.id}"></a></td>
+		
+		<td th:text="${user.id}"></td>
+		<td th:text="${user.name}"></td>
+		<td th:text="${user.email}"></td>
+		<td th:text="${user.active}"></td>
+		
+	</tr>
+
+</table>
+
+</body>
+</html>
