@@ -19,14 +19,17 @@ public class SqliteUserDao implements UserDao {
 	private Connection conn;
 	private final String url = "jdbc:sqlite:C:/data/november/userdb.db";
 	
-	//@Value("${app.connectionString}")
-	//private String url;
+	
+	
+	@Value("${app.name}")
+	private String name;
 	
 	
 	// member functions
 
 	// constructor
 	public SqliteUserDao() {
+		System.out.println("Name:" + name);
 		System.out.println("The url is:" + url);
 		try {
 			conn = DriverManager.getConnection(url);
@@ -37,6 +40,10 @@ public class SqliteUserDao implements UserDao {
 	
 	// getUsers
 	public List<User> getUsers() {
+		
+		System.out.println("Name:" + name);
+		System.out.println("url:" + url);
+		
 		ArrayList<User> users = new ArrayList<>();
 		String sql = "select * from users";
 		

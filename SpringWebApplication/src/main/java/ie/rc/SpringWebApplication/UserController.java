@@ -24,7 +24,6 @@ public class UserController {
 	@Autowired
 	UserDao dao;
 	
-	
 	@RequestMapping("/")
 	public String userList(Model model) {
 		
@@ -44,13 +43,48 @@ public class UserController {
 			model.addAttribute("user", u);
 			
 		} catch (UserDaoException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
+		model.addAttribute("title", "User Details");
 		return "userdetails";
 	}
 	
+	@RequestMapping("/confirmdelete") 
+	public String confirmDelete(Model model, @RequestParam int id) {
+		
+		try {
+			User userToDelete = dao.getUser(id);
+			
+			model.addAttribute("user", userToDelete);
+			
+		} catch (UserDaoException e) {
+			e.printStackTrace();
+		}
+		
+		return "confirmform";
+		
+	}
+	@RequestMapping("/delete")
+	public String deleteUser(Model model, 
+							@RequestParam int id, 
+							@RequestParam String delete) {
+		
+		if (delete.equals("yes")) {
+			System.out.println("delete user " + id);
+			try {
+				dao.deleteUser(id);
+			} catch (UserDaoException e) {
+				e.printStackTrace();
+			}
+			
+			model.addAttribute("title", "User Deleted");
+		} else {
+			System.out.println("delete cancelled");
+			model.addAttribute("title", "Delete Cancelled");
+		}
+		return "userdeleted";
+	}
 	@RequestMapping("/details")
 	public String userDetailsUsingQueryParameter(Model model, @RequestParam int id) {
 		
@@ -59,9 +93,9 @@ public class UserController {
 			model.addAttribute("user", u);
 			
 		} catch (UserDaoException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		model.addAttribute("title", "User Details");
 		return "userdetails";
 	}
 
@@ -73,15 +107,20 @@ public class UserController {
 	}
 	
 	@PostMapping("/add")
-	public String handleAddUserFormSubmit(@ModelAttribute User userToAdd) {
+	public String handleAddUserFormSubmit(Model model, 
+			@ModelAttribute User userToAdd) {
 		
 		System.out.println(userToAdd);
 		
-		return "useradded";
+		User addedUser = dao.addUser(userToAdd);
+		
+		System.out.println(addedUser);
+		
+		model.addAttribute("user", addedUser);
+		model.addAttribute("title", "User Added");
+		
+		return "userdetails";
 	}
-	
-	
-	
 	
 	@RequestMapping("/test")
 	public String userListTest(Model model) {

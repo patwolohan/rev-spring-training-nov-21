@@ -14,6 +14,7 @@ public class User {
 	public User() {
 		super();
 	}
+	
 	public User(int id, String name, String email, boolean active) {
 		super();
 		this.id = id;

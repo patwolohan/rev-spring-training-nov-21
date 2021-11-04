@@ -20,7 +20,13 @@ public class AnnotatedUser {
 
 	public static void main(String[] args) {
 		
-		AnnotatedUser u = new AnnotatedUser();
+		AnnotatedUser u = new AnnotatedUser(1, "Aidan", "aidan@gmail.com", true);
+		
+		System.out.println(u);
+		
+		System.out.println(u.getName());
+		
+		u.setName("Changed");
 		
 		System.out.println(u);
 		
