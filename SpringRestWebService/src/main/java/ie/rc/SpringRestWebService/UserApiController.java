@@ -36,16 +36,12 @@ public class UserApiController {
 		User user = null;
 		try {
 			user = dao.getUser(id);
-			
 			System.out.println(user);
 			return new ResponseEntity<User>(user, HttpStatus.OK);
-			
-			
 		} catch (UserDaoException e) {
 			System.out.println("not found");
 			return new ResponseEntity<User>(user, HttpStatus.NOT_FOUND);
 		}
-		
 	}
 	
 	@DeleteMapping("/users/{id}")
