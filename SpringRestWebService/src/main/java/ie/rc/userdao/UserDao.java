@@ -7,7 +7,7 @@ public interface UserDao {
 	List<User> getUsers();
 	User getUser(int id) throws UserDaoException;
 	User addUser(User userToAdd);
-	void updateUser(User userToUpdate) throws UserDaoException;
+	User updateUser(User userToUpdate) throws UserDaoException;
 	void deleteUser(int id) throws UserDaoException;
 	void close();
 }

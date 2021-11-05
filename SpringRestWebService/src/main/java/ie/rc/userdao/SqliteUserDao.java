@@ -115,7 +115,7 @@ public class SqliteUserDao implements UserDao {
 		}
 	}
 	
-	public void updateUser(User userToUpdate) {
+	public User updateUser(User userToUpdate) {
 		// update this user in the database
 
 		String sql = "UPDATE users SET name = ?, email = ?, active = ? WHERE id = ?";
@@ -136,6 +136,7 @@ public class SqliteUserDao implements UserDao {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		return userToUpdate;
 		
 	}	
 	

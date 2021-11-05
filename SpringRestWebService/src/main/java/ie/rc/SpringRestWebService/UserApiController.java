@@ -36,7 +36,6 @@ public class UserApiController {
 		User user = null;
 		try {
 			user = dao.getUser(id);
-			System.out.println(user);
 			return new ResponseEntity<User>(user, HttpStatus.OK);
 		} catch (UserDaoException e) {
 			System.out.println("not found");
@@ -64,14 +63,14 @@ public class UserApiController {
 	}
 	
 	@PutMapping("/users/{id}")
-	public void updateUser(@PathVariable("id") int id, @RequestBody User userToUpdate) {
+	public User updateUser(@PathVariable("id") int id, @RequestBody User userToUpdate) {
 		try {
 			dao.updateUser(userToUpdate);
 			
 		} catch (UserDaoException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		return userToUpdate;
 	}
 	
 	@GetMapping("/test")

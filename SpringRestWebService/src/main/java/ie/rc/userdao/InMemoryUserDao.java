@@ -41,7 +41,7 @@ public class InMemoryUserDao implements UserDao {
 		return userToAdd;
 	}
 	
-	public void updateUser(User userToUpdate) throws UserDaoException {
+	public User updateUser(User userToUpdate) throws UserDaoException {
 		
 		for (int i=0; i<users.size(); i++) {
 			
@@ -50,7 +50,7 @@ public class InMemoryUserDao implements UserDao {
 				user.setName(userToUpdate.getName());
 				user.setEmail(userToUpdate.getEmail());
 				user.setActive(userToUpdate.isActive());
-				return;
+				return user;
 			}
 		}
 		throw new UserDaoException("User " + userToUpdate.getId() + " not found");		
